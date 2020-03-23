@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th><abbr title="Username">Username</abbr></th>
+      <th><abbr title="Success">Success</abbr></th>
+      <th><abbr title="Keyboard Pwd">Keyboard Pwd</abbr></th>
+      <th><abbr title="Date">Date</abbr></th>
+    </tr>
+  </thead>
+  {% for unlock_record in unlock_records %}
+    <tbody>
+      <tr>
+        <th>{{ unlock_record['username'] }}</th>
+        <td>{{ unlock_record['success'] }}</td>
+        <td>{{ unlock_record['keyboardPwd'] }}</td>
+        <td id='timestamp'>{{ unlock_record['serverDate'] }}</td>
+      </tr>
+    </tbody>
+  {% endfor %}
+</table>
+{% endblock %}

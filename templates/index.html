@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">List of Locks</h1>
+<div class="columns is-gapless is-multiline is-mobile">
+  {% for lock in locks %}
+    <div class="column is-2 is-flex">
+      <div class="tile">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              {{ lock['lockAlias'] }}
+            </p>
+            <a href="#" class="card-header-icon" aria-label="more options">
+              <span class="icon">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </a>
+          </header>
+          <div class="card-content">
+            <div class="content ">
+                {{lock['lockId']}}<br>
+                {{lock['lockName']}}<br>
+                {{lock['lockMac']}}<br>
+                {{lock['electricQuantity']}}<br>
+                {{lock['specialValue']}}<br>
+              </ul>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <a href="/password/{{lock['lockId']}}" class="card-footer-item">Passwords</a>
+            <a href="/unlock/{{lock['lockId']}}" class="card-footer-item">Unlock records</a>
+          </footer>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

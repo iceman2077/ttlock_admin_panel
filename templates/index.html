@@ -4,7 +4,7 @@
 <h1 class="title">List of Locks</h1>
 <div class="columns is-gapless is-multiline is-mobile">
   {% for lock in locks %}
-    <div class="column is-2 is-flex">
+    <div class="column is-3">
       <div class="tile">
         <div class="card">
           <header class="card-header">
@@ -30,6 +30,7 @@
           <footer class="card-footer">
             <a href="/password/{{lock['lockId']}}" class="card-footer-item">Passwords</a>
             <a href="/unlock/{{lock['lockId']}}" class="card-footer-item">Unlock records</a>
+            <a href="/create_password/{{lock['lockId']}}" class="card-footer-item">Create password</a>
           </footer>
         </div>
       </div>

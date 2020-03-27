@@ -2,14 +2,14 @@ import configparser
 import requests
 import os
 import json
-from datetime import datetime,timezone,timedelta
+from datetime import datetime, timezone, timedelta
 
 
 config = configparser.ConfigParser()
-config.read('ttlock\config.ini')
-client_secret = config['ttlock']['client_secret']
-client_id = config['ttlock']['client_id']
-redirect_uri = config['ttlock']['redirect_uri']
+config.read('ttlock_admin_panel\config.ini')
+client_secret = config['ttlock_admin_panel']['client_secret']
+client_id = config['ttlock_admin_panel']['client_id']
+redirect_uri = config['ttlock_admin_panel']['redirect_uri']
 time = int(datetime.now().replace(tzinfo=timezone.utc).timestamp()* 1e3)
 header = {'Content-Type': 'application/x-www-form-urlencoded'}
 
@@ -79,15 +79,26 @@ def list_passwords(accessToken, lockId, pageNo):
 
 def get_all_unlock_records(accessToken):
     locks = lock_list(accessToken, 1)
-    all_locks = []
+    all_locks_id = []
     for i in range(len(locks.json()["list"])):
-        all_locks.append(locks.json()["list"][i]["lockId"])
+        all_locks_id.append(locks.json()["list"][i]["lockId"])
     all_unlock_records = []
-    for i in range(len(all_locks)):
-        unlock_record = unlock_records_one_day(accessToken, all_locks[i], 1)
-        if unlock_record != []:
-            all_unlock_records.append([unlock_record.json()["list"][x] for x in range(len(unlock_record.json()["list"]))])
+    for i in range(len(all_locks_id)):
+        unlock_record = unlock_records_one_day(accessToken, all_locks_id[i], 1)
+        if unlock_record.json()['total'] != 0:
+            [all_unlock_records.append(unlock_record.json()["list"][x]) for x in range(len(unlock_record.json()["list"]))]
     return all_unlock_records
 
-
- 
+def create_password(accessToken, lockId, keyboardPwd, keyboardPwdName, startDate, endDate):
+    url = 'https://api.ttlock.com/v3/keyboardPwd/add'
+    response = requests.request("POST", url, headers=header, data =  {'clientId': client_id,
+        'accessToken': accessToken,
+        'lockId': lockId,
+        'keyboardPwd': keyboardPwd,
+        'keyboardPwdName': keyboardPwdName,
+        'startDate': startDate,
+        'endDate': endDate,
+        'addType': 2,
+        'date': int(datetime.now().timestamp()* 1e3) })
+    return(response)
+    

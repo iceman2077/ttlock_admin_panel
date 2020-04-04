@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<table class="table">
+<table class="fl-table">
   <thead>
     <tr>
       <th><abbr title="Username">Username</abbr></th>
@@ -10,16 +10,16 @@
       <th><abbr title="Date">Date</abbr></th>
     </tr>
   </thead>
+  <tbody>
   {% for unlock_record in unlock_records %}
-    <tbody>
       <tr>
         <th>{{ unlock_record['username'] }}</th>
-        <td>{{ unlock_record['success'] }}</td>
-        <td>{{ unlock_record['keyboardPwd'] }}</td>
-        <td id='timestamp'>{{ unlock_record['lockDate'] }}</td>
+        <th>{{ unlock_record['success'] }}</th>
+        <th>{{ unlock_record['keyboardPwd'] }}</th>
+        <th id='timestamp'>{{ unlock_record['lockDate'] }}</th>
       </tr>
-    </tbody>
   {% endfor %}
+  </tbody>
 </table>
 {% endblock %}
 1585334766000

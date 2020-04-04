@@ -1,0 +1,271 @@
+/* imports */
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+/* resets */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.clearfix:after {
+	content: "";
+  display: table;
+  clear: both;
+}
+.hero.is-primary {
+    background-color: #f9f9f9;
+    color: #f9f9f9;
+}
+.hero-foot, .hero-head {
+    background: black;
+}
+
+.hero.is-primary a.navbar-item:hover {
+    background-color: #485983;
+    color: #fff;
+}
+.title-locks{
+    color: #485983;
+    font-family: 'Open Sans';
+    font-weight: 600;
+    font-size: 2em;
+}
+/* global */
+h1 {
+  font-family: "Lobster", cursive;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+h2 {
+  font-weight: 700;
+}
+.hero.is-primary .title{
+    color: #485983;
+}
+
+.button.is-info {
+    background-color: #485983;
+    border-color: transparent;
+    color: #fff;
+}
+
+/* grid */
+.row {
+  margin: 0 -10px;
+  margin-bottom: 20px;
+}
+.row:last-child {
+  margin-bottom: 0;
+}
+[class*="col-"] {
+  padding: 10px;
+}
+
+.pricing-table {
+	margin: 0 10px;
+	text-align: center;
+	width: 300px;
+	float: left;
+	-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.4);
+	box-shadow: 0 0 15px rgba(0,0,0,0.4);
+	-webkit-transition: all 0.25s ease;
+	-o-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+}
+
+.pricing-table:hover {
+	-webkit-transform: scale(1.06);
+	-ms-transform: scale(1.06);
+	-o-transform: scale(1.06);
+	transform: scale(1.06);
+}
+
+.pricing-title {
+	color: #403b3b;
+    background: #f0f0f0;
+    font: message-box;
+    padding: 20px 0;
+    line-height:90%;
+    height:90px;
+	font-size: 1.5em;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+}
+
+.pricing-table.recommended .pricing-title {
+	background: #2db3cb;
+}
+
+.pricing-table.recommended .pricing-action {
+	background: #2db3cb;
+}
+
+.pricing-table .price {
+	background: #403e3d;
+	font-size: 3.4em;
+	font-weight: 700;
+	padding: 20px 0;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+}
+
+.pricing-table .price sup {
+	font-size: 0.4em;
+	position: relative;
+	left: 5px;
+}
+
+.table-list {
+	background: #FFF;
+	color: #403d3a;
+}
+
+.table-list li {
+	font-size: 1.1em;
+	font-weight: 500;
+    padding: 12px 8px;
+    list-style-type: none;
+}
+
+
+.table-list li span {
+	font-weight: 400;
+}
+
+.table-list li span.unlimited {
+	color: #FFF;
+	background: #e95846;
+	font-size: 0.9em;
+	padding: 5px 7px;
+	display: inline-block;
+	-webkit-border-radius: 38px;
+	-moz-border-radius: 38px;
+	border-radius: 38px;
+}
+
+
+.table-list li:nth-child(2n) {
+	background: #F0F0F0;
+}
+
+.table-buy {
+	background: #FFF;
+	padding: 15px;
+	text-align: left;
+	overflow: hidden;
+}
+
+.table-buy .pricing-action {
+    width: 100%;
+      float: left;
+      color: #FFF;
+    text-align: center;
+      background: #485983;
+      padding: 10px 16px;
+    margin-bottom:10px;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      border-radius: 10px;
+      font-weight: 400;
+      font-size: 1.1em;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+      -webkit-transition: all 0.25s ease;
+      -o-transition: all 0.25s ease;
+      transition: all 0.25s ease;
+  }
+  
+  .table-buy .pricing-action:hover {
+      background: #333;
+  }
+  
+  .recommended .table-buy .pricing-action:hover {
+      background: #228799;	
+  }
+
+  .fl-table {
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 60%;
+    margin: 0 auto;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: #5a7ebf;
+}
+
+
+.fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #485983;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+/** ================
+ * Responsive
+ ===================*/
+ @media only screen and (min-width: 768px) and (max-width: 959px) {
+    .pricing-table {
+        width: 236px;
+    }
+   
+   .table-list li {
+       font-size: 1.3em;
+   }
+
+}
+
+@media only screen and (max-width: 767px) {
+    .pricing-table {
+        display: block;
+        float: none;
+        margin: 0 0 20px 0;
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 479px) {
+   .pricing-wrapper {
+       width: 300px;
+   }
+} 
+@media only screen and (min-width: 450px) {
+	.col {
+        width: 95%;
+        float: left;
+        margin: 20px;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.col {
+        width: 45%;
+        float: left;
+        margin: 20px;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.col {
+        width: 20%;
+        float: left;
+        margin: 20px;
+	}
+}

@@ -5,7 +5,7 @@ from datetime import datetime, timezone, timedelta
 
 
 config = configparser.ConfigParser()
-config.read('ttlock_admin_panel\config.ini')
+config.read("ttlock_admin_panel\config.ini")
 client_secret = config['ttlock_admin_panel']['client_secret']
 client_id = config['ttlock_admin_panel']['client_id']
 redirect_uri = config['ttlock_admin_panel']['redirect_uri']
@@ -14,7 +14,8 @@ header = {'Content-Type': 'application/x-www-form-urlencoded'}
 
 
 def get_token(email, password):
-    payload = {'grant_type': 'password',
+    payload = {
+        'grant_type': 'password',
         'client_secret': client_secret,
         'client_id': client_id,
         'redirect_uri': redirect_uri,
@@ -26,7 +27,8 @@ def get_token(email, password):
 
 
 def refresh_tocken(refresh_token):
-    payload = {'grant_type': 'refresh_token',
+    payload = {
+        'grant_type': 'refresh_token',
         'client_secret': client_secret,
         'client_id': client_id,
         'redirect_uri': redirect_uri,

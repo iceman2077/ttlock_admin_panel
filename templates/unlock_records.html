@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table class="fl-table">
+  <thead>
+    <tr>
+      <th><abbr title="Username">Username</abbr></th>
+      <th><abbr title="Success">Success</abbr></th>
+      <th><abbr title="Keyboard Pwd">Keyboard Pwd</abbr></th>
+      <th><abbr title="Date">Date</abbr></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for unlock_record in unlock_records %}
+      <tr>
+        <th>{{ unlock_record['username'] }}</th>
+        <th>{{ unlock_record['success'] }}</th>
+        <th>{{ unlock_record['keyboardPwd'] }}</th>
+        <th id='timestamp'>{{ unlock_record['lockDate'] }}</th>
+      </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+1585334766000

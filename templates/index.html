@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title-locks">List of Locks</h1>
+<div class="row clearfix">
+  {% for lock in locks %}
+      <div class="col">
+        <div class="pricing-table">
+          <h3 class="pricing-title">{{lock['lockAlias']}}</h3>
+          <ul class="table-list">
+            <li>Lock ID: <span>{{lock['lockId']}}</span></li>
+            <li>Lock Battery: <span>{{lock['electricQuantity']}}</span></li>
+          </ul>
+          <!-- Contratar / Comprar -->
+          <div class="table-buy">
+            <a href="/password/{{lock['lockId']}}" class="pricing-action">Password</a>
+            <a href="/unlock/{{lock['lockId']}}" class="pricing-action">Unlock records</a>
+            <a href="/create_password/{{lock['lockId']}}" class="pricing-action">Create password</a>
+          </div>
+		    </div>
+      </div>
+  {% endfor %}
+</div>
+{% endblock %}

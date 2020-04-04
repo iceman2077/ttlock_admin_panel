@@ -108,4 +108,3 @@ def create_password(accessToken, lockId, keyboardPwd, keyboardPwdName, startDate
         'addType': 2,
         'date': int(datetime.now().timestamp() * 1e3)})
     return(response)
-

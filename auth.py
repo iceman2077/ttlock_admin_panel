@@ -3,15 +3,16 @@ from flask_login import login_user, logout_user, login_required
 from .api_requests import get_token, refresh_tocken
 from .models import User
 from . import db
-import hashlib
 import json
 
 auth = Blueprint('auth', __name__)
 
+
 @auth.route('/login')
 def login():
     return render_template('login.html')
- 
+
+
 @auth.route('/login', methods=['POST'])
 def login_post():
     username = request.form.get('email')
@@ -49,7 +50,8 @@ def login_post():
     user = User.query.filter_by(username=username).first()
     login_user(user, remember=remember)
     return redirect(url_for('main.index'))
-     
+
+
 @auth.route('/logout')
 @login_required
 def logout():

@@ -1,11 +1,10 @@
 import configparser
 import requests
-import json
 from datetime import datetime, timezone, timedelta
 
 
 config = configparser.ConfigParser()
-config.read("ttlock_admin_panel\config.ini")
+config.read('ttlock_admin_panel\\config.ini')
 client_secret = config['ttlock_admin_panel']['client_secret']
 client_id = config['ttlock_admin_panel']['client_id']
 redirect_uri = config['ttlock_admin_panel']['redirect_uri']
@@ -40,7 +39,8 @@ def refresh_tocken(refresh_token):
 
 def lock_list(accessToken, pageNo):
     url = 'https://api.ttlock.com/v3/lock/list'
-    response = requests.request("POST", url, headers=header, data={'clientId': client_id,
+    response = requests.request("POST", url, headers=header, data={
+        'clientId': client_id,
         'accessToken': accessToken,
         'pageNo': pageNo,
         'pageSize': 50,
@@ -50,7 +50,8 @@ def lock_list(accessToken, pageNo):
 
 def unlock_records(accessToken, lockId, pageNo):
     url = 'https://api.ttlock.com/v3/lockRecord/list'
-    response = requests.request("POST", url, headers=header, data={'clientId': client_id,
+    response = requests.request("POST", url, headers=header, data={
+        'clientId': client_id,
         'accessToken': accessToken,
         'lockId': lockId,
         'startDate': int((datetime.now() - timedelta(days=7)).timestamp() * 1e3),
@@ -63,7 +64,8 @@ def unlock_records(accessToken, lockId, pageNo):
 
 def unlock_records_one_day(accessToken, lockId, pageNo):
     url = 'https://api.ttlock.com/v3/lockRecord/list'
-    response = requests.request("POST", url, headers=header, data={'clientId': client_id,
+    response = requests.request("POST", url, headers=header, data={
+        'clientId': client_id,
         'accessToken': accessToken,
         'lockId': lockId,
         'startDate': int((datetime.now() - timedelta(days=1)).timestamp() * 1e3),
@@ -76,7 +78,8 @@ def unlock_records_one_day(accessToken, lockId, pageNo):
 
 def list_passwords(accessToken, lockId, pageNo):
     url = 'https://api.ttlock.com/v3/lock/listKeyboardPwd'
-    response = requests.request("POST", url, headers=header, data={'clientId': client_id,
+    response = requests.request("POST", url, headers=header, data={
+        'clientId': client_id,
         'accessToken': accessToken,
         'lockId': lockId,
         'pageNo': pageNo,
@@ -100,7 +103,8 @@ def get_all_unlock_records(accessToken):
 
 def create_password(accessToken, lockId, keyboardPwd, keyboardPwdName, startDate, endDate):
     url = 'https://api.ttlock.com/v3/keyboardPwd/add'
-    response = requests.request("POST", url, headers=header, data={'clientId': client_id,
+    response = requests.request("POST", url, headers=header, data={
+        'clientId': client_id,
         'accessToken': accessToken,
         'lockId': lockId,
         'keyboardPwd': keyboardPwd,

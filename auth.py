@@ -3,7 +3,6 @@ from flask_login import login_user, logout_user, login_required
 from .api_requests import get_token, refresh_tocken
 from .models import User
 from . import db
-import json
 
 auth = Blueprint('auth', __name__)
 

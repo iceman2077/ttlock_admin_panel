@@ -1,6 +1,5 @@
 import configparser
 import requests
-import os
 import json
 from datetime import datetime, timezone, timedelta
 
@@ -13,13 +12,14 @@ redirect_uri = config['ttlock_admin_panel']['redirect_uri']
 time = int(datetime.now().replace(tzinfo=timezone.utc).timestamp()* 1e3)
 header = {'Content-Type': 'application/x-www-form-urlencoded'}
 
-def get_token(email,password):
+
+def get_token(email, password):
     payload = {'grant_type': 'password',
         'client_secret': client_secret,
         'client_id': client_id,
         'redirect_uri': redirect_uri,
-        'username':email,
-        'password':password }
+        'username': email,
+        'password': password }
     url = 'https://api.ttlock.com/oauth2/token'
     response = requests.request("POST", url, headers=header, data = payload)
     return(response)

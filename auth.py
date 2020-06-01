@@ -28,7 +28,7 @@ def login_post():
     check_username = User.query.filter_by(username=username).first()
     if check_username:  # if a user is found, we want to redirect back to signup page so user can try again
         if expire_in < 432000:
-            refresh_tocken_ttlock = refresh_tocken(request_user_ttlock.json()['refresh_tocken'])
+            refresh_tocken_ttlock = refresh_tocken(request_user_ttlock.json()['refresh_token'])
             check_username.access_token = refresh_tocken_ttlock.json()['access_token']
             check_username.expires_in = refresh_tocken_ttlock.json()['expires_in']
             check_username.refresh_token = refresh_tocken_ttlock.json()['refresh_token']
